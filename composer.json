@@ -4,8 +4,7 @@
 	"description": "The package extends the Drago Project to include database work.",
 	"require": {
 		"php": ">=8.3 <9",
-		"drago-ex/database": "^2.0",
-		"composer-plugin-api": "^2.3"
+		"drago-ex/database": "^2.0"
 	},
 	"extra": {
 		"drago-project": {
@@ -17,8 +16,5 @@
 				}
 			}
 		}
-	},
-	"require-dev": {
-		"composer/composer": "^2.9"
 	}
 }
