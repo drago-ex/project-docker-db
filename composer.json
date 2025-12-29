@@ -5,7 +5,7 @@
 	"require": {
 		"php": ">=8.3 <9",
 		"drago-ex/database": "^2.0",
-	  	"drago-ex/project-docker": "@dev"
+		"drago-ex/project-docker": "^1.0"
 	},
 	"extra": {
 		"drago-project": {
@@ -13,7 +13,7 @@
 				"copy": {
 					"resources/app": "app",
 					"docker/Dockerfile-db": "docker",
-					"docker-compose.override.yaml": ""
+					"docker-compose.override.yaml": "docker-compose.override.yaml"
 				}
 			}
 		}
