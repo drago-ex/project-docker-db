@@ -4,17 +4,26 @@
 	"description": "The package extends the Drago Project to include database work.",
 	"require": {
 		"php": ">=8.3 <9",
-		"drago-ex/database": "^2.0"
+		"drago-ex/database": "^2.0",
+	  	"drago-ex/project-docker": "@dev"
 	},
 	"extra": {
 		"drago-project": {
 			"install": {
 				"copy": {
 					"resources/app": "app",
-					"resources/docker/Dockerfile-db": "docker",
-					"resources/docker/docker-compose-db.yml": ""
+					"docker/Dockerfile-db": "docker",
+					"docker-compose.override.yaml": ""
 				}
 			}
 		}
+	},
+	"scripts": {
+		"post-install-cmd": [
+			"php dev.copy.php"
+		],
+		"post-update-cmd": [
+			"php dev.copy.php"
+		]
 	}
 }

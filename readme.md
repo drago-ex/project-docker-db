@@ -23,5 +23,5 @@ composer require drago-ex/project-db
 
 ## Docker Setup
 ```bash
-docker-compose -f docker-compose-db.yml build
+docker-compose -f docker-compose.override .yml build
 ```
