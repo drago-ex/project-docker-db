@@ -2,6 +2,7 @@
 	"name": "drago-ex/project-db",
 	"type": "drago-project-resource",
 	"description": "The package extends the Drago Project to include database work.",
+	"license": ["MIT"],
 	"require": {
 		"php": ">=8.3 <9",
 		"drago-ex/database": "^2.0",
