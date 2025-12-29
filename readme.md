@@ -20,8 +20,3 @@ The package extends the Drago Project to include database work.
 ```bash
 composer require drago-ex/project-db
 ```
-
-## Docker Setup
-```bash
-docker-compose -f docker-compose.override .yml build
-```
