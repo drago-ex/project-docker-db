@@ -1,7 +1,7 @@
 {
 	"name": "drago-ex/project-db",
 	"type": "drago-project-resource",
-	"description": "The package extends the Drago Project to include database work.",
+	"description": "The package extends the Drago Project to include mysqli database.",
 	"license": ["MIT"],
 	"require": {
 		"php": ">=8.3 <9",
