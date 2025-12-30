@@ -21,3 +21,8 @@ The package extends the Drago Project to include mysqli database.
 ```bash
 composer require drago-ex/project-db
 ```
+
+## Remember
+This package extends the basic docker php server with a mysqli database and requires an existing build before updating.
+
+https://github.com/drago-ex/project-docker
