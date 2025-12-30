@@ -23,6 +23,6 @@ composer require drago-ex/project-db
 ```
 
 ## Remember
-The package extends the basic php server on docker with a mysqli database and requires an existing build before updating.
+The package extends the basic php server on docker with a mysqli database and requires an existing build before the update, and only then can the docker update be performed.
 
 https://github.com/drago-ex/project-docker
