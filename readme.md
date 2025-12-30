@@ -9,6 +9,7 @@ The package extends the Drago Project to include mysqli database.
 - PHP >= 8.3
 - Nette Framework
 - Docker
+- Dibi
 - Drago Project core packages
 
 ## The package does the following
