@@ -1,5 +1,5 @@
 extensions:
-	dibi: Dibi\Bridges\Nette\DibiExtension22
+	dibi: Dibi\Bridges\Nette\DibiExtension3
 
 dibi:
 	host: db
