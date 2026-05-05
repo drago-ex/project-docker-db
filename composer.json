@@ -21,10 +21,10 @@
 	},
 	"scripts": {
 		"post-install-cmd": [
-			"php dev.copy.php"
+			"php dev-copy.php"
 		],
 		"post-update-cmd": [
-			"php dev.copy.php"
+			"php dev-copy.php"
 		]
 	}
 }
