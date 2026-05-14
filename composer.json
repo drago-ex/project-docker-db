@@ -1,7 +1,7 @@
 {
 	"name": "drago-ex/project-docker-db",
 	"type": "drago-project-resource",
-	"description": "The package extends the Drago Project to include mysqli database.",
+	"description": "The package extends the Drago Project to include mysqli database on docker.",
 	"license": ["MIT"],
 	"require": {
 		"php": ">=8.3 <9",
