@@ -2,9 +2,9 @@
 
 The package extends the Drago Project to include mysqli database on docker.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/drago-ex/project-db/blob/main/license)
-[![PHP version](https://badge.fury.io/ph/drago-ex%2Fproject-db.svg)](https://badge.fury.io/ph/drago-ex%2Fproject-db)
-[![Coding Style](https://github.com/drago-ex/project-db/actions/workflows/coding-style.yml/badge.svg)](https://github.com/drago-ex/project-db/actions/workflows/coding-style.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/drago-ex/project-docker-db/blob/main/license)
+[![PHP version](https://badge.fury.io/ph/drago-ex%2Fproject-docker-db.svg)](https://badge.fury.io/ph/drago-ex%2Fproject-docker-db)
+[![Coding Style](https://github.com/drago-ex/project-docker-db/actions/workflows/coding-style.yml/badge.svg)](https://github.com/drago-ex/project-docker-db/actions/workflows/coding-style.yml)
 
 ## Requirements
 - PHP >= 8.3
@@ -15,7 +15,7 @@ The package extends the Drago Project to include mysqli database on docker.
 
 ## Installation
 ```bash
-composer require drago-ex/project-db
+composer require drago-ex/project-docker-db
 ```
 
 ## The package does the following
