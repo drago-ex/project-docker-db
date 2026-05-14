@@ -1,6 +1,6 @@
 # Drago Project with a database
 
-The package extends the Drago Project to include mysqli database.
+The package extends the Drago Project to include mysqli database on docker.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/drago-ex/project-db/blob/main/license)
 [![PHP version](https://badge.fury.io/ph/drago-ex%2Fproject-db.svg)](https://badge.fury.io/ph/drago-ex%2Fproject-db)
