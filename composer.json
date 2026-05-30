@@ -5,8 +5,8 @@
 	"license": ["MIT"],
 	"require": {
 		"php": ">=8.3 <9",
-		"drago-ex/database": "^2.0",
-		"drago-ex/project-docker": "^1.0"
+		"drago-ex/database": "^3.0",
+		"drago-ex/project-docker": "^2.0"
 	},
 	"extra": {
 		"drago-project": {
