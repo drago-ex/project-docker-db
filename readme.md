@@ -18,6 +18,10 @@ The package extends the Drago Project to include mysqli database on docker.
 composer require drago-ex/project-docker-db
 ```
 
+## Project files
+The package has `extra.drago-project.skip` set to `false`, so `drago-install` copies the configured files automatically.
+If `skip` is set to `true`, copy those files manually according to the `copy` section in `composer.json`.
+
 ## The package does the following
 - Copies a configured Neon file with database settings preconfigured for Docker.
 - Adds Docker files for database setup.

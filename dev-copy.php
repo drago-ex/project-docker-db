@@ -13,14 +13,18 @@ $filesToCopy = [
 
 function copyDirectory(string $sourceDir, string $destinationDir): bool
 {
-	if (!is_dir($sourceDir)) return false;
+	if (!is_dir($sourceDir)) {
+		return false;
+	}
 	if (!is_dir($destinationDir)) {
 		mkdir($destinationDir, 0o777, true);
 	}
 
 	$items = scandir($sourceDir);
 	foreach ($items as $item) {
-		if ($item === '.' || $item === '..') continue;
+		if ($item === '.' || $item === '..') {
+			continue;
+		}
 
 		$sourcePath = $sourceDir . '/' . $item;
 		$destPath = $destinationDir . '/' . $item;
