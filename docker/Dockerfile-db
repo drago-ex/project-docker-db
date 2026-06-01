@@ -6,3 +6,9 @@ RUN apt update \
 
 RUN docker-php-ext-install mysqli \
     && docker-php-ext-enable mysqli
+
+COPY entrypoint.sh /usr/local/bin/drago-entrypoint.sh
+RUN sed -i 's/\r$//' /usr/local/bin/drago-entrypoint.sh
+
+ENTRYPOINT ["sh", "/usr/local/bin/drago-entrypoint.sh"]
+CMD ["apache2-foreground"]
