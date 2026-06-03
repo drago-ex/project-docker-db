@@ -19,12 +19,17 @@
 			}
 		}
 	},
+	"require-dev": {
+		"drago-ex/project-tools": "@dev"
+	},
 	"scripts": {
 		"post-install-cmd": [
-			"php dev-copy.php"
+			"drago-install --dev",
+			"drago-clean"
 		],
 		"post-update-cmd": [
-			"php dev-copy.php"
+			"drago-install --dev",
+			"drago-clean"
 		]
 	}
 }
