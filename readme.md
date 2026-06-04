@@ -22,7 +22,7 @@ composer require drago-ex/project-docker-db
 File copying is handled automatically by [drago-ex/project-tools](https://github.com/drago-ex/project-tools),
 which must be installed in your project. Without it, copy the files manually according to the `copy` section
 in this package's `composer.json`. To skip this package, set `"skip": true` under
-`extra.drago-project.packages.<package-name>` in your root `composer.json`.
+`extra.drago-tools.packages.<package-name>` in your root `composer.json`.
 
 ## The package does the following
 - Copies a configured Neon file with database settings preconfigured for Docker.
