@@ -1,6 +1,6 @@
 # Drago Project with a database
 
-The package extends the Drago Project to include mysqli database on docker.
+The package extends Drago Project with a MySQL database in Docker.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/drago-ex/project-docker-db/blob/main/license)
 [![PHP version](https://badge.fury.io/ph/drago-ex%2Fproject-docker-db.svg)](https://badge.fury.io/ph/drago-ex%2Fproject-docker-db)
@@ -30,6 +30,6 @@ in this package's `composer.json`. To skip this package, set `"skip": true` unde
 - Integrates Dibi for database interaction.
 
 ## Remember
-The package extends the basic php server on docker with a mysqli database and requires an existing build before the update, and only then can the docker update be performed.
+The package extends the basic PHP Docker server with a MySQL database. Install and build the base Docker setup first, then add this database package and rebuild Docker.
 
 https://github.com/drago-ex/project-docker
