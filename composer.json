@@ -20,7 +20,7 @@
 		}
 	},
 	"require-dev": {
-		"drago-ex/project-tools": "@dev"
+		"drago-ex/project-tools": "^1.0"
 	},
 	"scripts": {
 		"post-install-cmd": [
