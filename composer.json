@@ -1,23 +1,12 @@
 {
 	"name": "drago-ex/project-docker-db",
-	"type": "drago-tools-resource",
 	"description": "The package extends the Drago Project to include mysqli database on docker.",
+	"type": "drago-tools-resource",
 	"license": ["MIT"],
 	"require": {
 		"php": ">=8.3 <9",
 		"drago-ex/database": "^3.0",
 		"drago-ex/project-docker": "^2.0"
-	},
-	"extra": {
-		"drago-tools": {
-			"install": {
-				"copy": {
-					"resources/app": "app",
-					"docker/Dockerfile-db": "docker",
-					"docker-compose.override.yaml": "docker-compose.override.yaml"
-				}
-			}
-		}
 	},
 	"require-dev": {
 		"drago-ex/project-tools": "^1.0"
@@ -31,5 +20,16 @@
 			"drago-install --dev",
 			"drago-clean"
 		]
+	},
+	"extra": {
+		"drago-tools": {
+			"install": {
+				"copy": {
+					"resources/app": "app",
+					"docker/Dockerfile-db": "docker",
+					"docker-compose.override.yaml": "docker-compose.override.yaml"
+				}
+			}
+		}
 	}
 }
