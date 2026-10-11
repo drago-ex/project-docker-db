@@ -11,16 +11,6 @@
 	"require-dev": {
 		"drago-ex/project-tools": "^1.0"
 	},
-	"scripts": {
-		"post-install-cmd": [
-			"drago-install --dev",
-			"drago-clean"
-		],
-		"post-update-cmd": [
-			"drago-install --dev",
-			"drago-clean"
-		]
-	},
 	"extra": {
 		"drago-tools": {
 			"install": {
@@ -31,5 +21,15 @@
 				}
 			}
 		}
+	},
+	"scripts": {
+		"post-install-cmd": [
+			"drago-install --dev",
+			"drago-clean"
+		],
+		"post-update-cmd": [
+			"drago-install --dev",
+			"drago-clean"
+		]
 	}
 }
