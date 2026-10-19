@@ -11,7 +11,7 @@ services:
 
   # database
   db:
-    image: library/mariadb:latest
+    image: library/mariadb:12.3
     command:
       --character-set-server=utf8mb4
       --collation-server=utf8mb4_unicode_ci
