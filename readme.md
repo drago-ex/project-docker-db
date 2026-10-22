@@ -32,6 +32,12 @@ in this package's `composer.json`. To skip this package, set `"skip": true` unde
 - Adds Docker files for database setup.
 - Integrates Dibi for database interaction.
 
+## Development only
+
+The database user, passwords (`super`/`pass`, root `root`) and the published port 6033 in
+`docker-compose.override.yaml` and `app/db.neon` are for local development. Change them, and do not publish
+the port, before the setup runs anywhere else (the `docker:production` script uses the same files).
+
 ## Remember
 
 The package extends the basic PHP Docker server with a MySQL database. Install and build the base Docker setup first, then add this database package and rebuild Docker.
