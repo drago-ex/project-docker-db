@@ -1,5 +1,7 @@
 # Drago Project with a database
 
+English | [Čeština](readme.cs.md)
+
 The package extends Drago Project with a MySQL database in Docker.
 
 [![PHP version](https://badge.fury.io/ph/drago-ex%2Fproject-docker-db.svg)](https://badge.fury.io/ph/drago-ex%2Fproject-docker-db)
