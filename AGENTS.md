@@ -7,7 +7,7 @@ Use this file as package-specific guidance when working in this repository. Keep
 - **Type**: drago-tools-resource
 - **Purpose**: The package extends the Drago Project to include mysqli database on docker.
 - **PHP**: >=8.3 <9
-- **Runtime dependencies**: drago-ex/database (^3.0 || ^4.0), drago-ex/project-docker (^2.0)
+- **Runtime dependencies**: drago-ex/database (^4.0), drago-ex/project-docker (^1.0)
 - **License**: MIT
 
 ## Repository Layout
@@ -19,7 +19,7 @@ Use this file as package-specific guidance when working in this repository. Keep
 ## Dependencies
 
 Composer constraints describe the package contract. Before changing integration behavior, inspect the source and the actual call sites in this package; do not infer runtime usage solely from dependency declarations.
-Development dependencies include drago-ex/project-tools (^2.0).
+Development dependencies include drago-ex/project-tools (^1.0).
 
 ## Essential Commands
 
