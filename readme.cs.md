@@ -1,7 +1,5 @@
 # Drago Project with a database
 
-[English](readme.md) | Čeština
-
 Balíček rozšiřuje Drago Project o databázi MySQL v Dockeru.
 
 [![PHP version](https://badge.fury.io/ph/drago-ex%2Fproject-docker-db.svg)](https://badge.fury.io/ph/drago-ex%2Fproject-docker-db)
