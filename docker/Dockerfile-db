@@ -1,4 +1,6 @@
-FROM php-server:latest
+# php is the runtime of docker/Dockerfile from drago-ex/project-docker, given by additional_contexts
+# in docker-compose.override.yaml; the server image is built on this one
+FROM php
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends mariadb-client \

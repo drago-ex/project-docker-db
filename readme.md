@@ -28,6 +28,9 @@ as set in `extra.drago-tools` of this package's `composer.json`.
 - Adds Docker files for database setup.
 - Integrates Dibi for database interaction.
 
+The data of the database are in the Docker volume `db-data`, which is much faster than a directory of the project
+on Windows. `docker compose down` keeps it, `docker compose down --volumes` deletes the data.
+
 ## Development only
 
 The database user, passwords (`super`/`pass`, root `root`) and the published port 6033 in

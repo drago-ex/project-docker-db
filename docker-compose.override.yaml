@@ -1,12 +1,20 @@
 # docker service
 services:
 
-  # php server update
-  server:
+  # the PHP runtime with mysqli (docker/Dockerfile-db), only built as the base of the server image
+  php-db:
     build:
       context: docker
       dockerfile: Dockerfile-db
-    image: php-server
+      additional_contexts:
+        php: service:php
+    profiles: [build]
+
+  # php server update
+  server:
+    build:
+      additional_contexts:
+        php: service:php-db
 
 
   # database
@@ -21,7 +29,12 @@ services:
       MYSQL_DATABASE: app
       MYSQL_USER: super
       MYSQL_PASSWORD: pass
+    # a Docker volume, much faster than a directory of the project on Windows (WSL2)
     volumes:
-      - ./docker/mysql/:/var/lib/mysql
+      - db-data:/var/lib/mysql
     ports:
       - '6033:3306'
+
+
+volumes:
+  db-data:

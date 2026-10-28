@@ -28,6 +28,9 @@ podle nastavení v `extra.drago-tools` v `composer.json` tohoto balíčku.
 - Přidá soubory Dockeru pro databázi.
 - Zapojí Dibi pro práci s databází.
 
+Data databáze jsou v Docker volume `db-data`, které je na Windows mnohem rychlejší než adresář projektu.
+`docker compose down` je zachová, `docker compose down --volumes` data smaže.
+
 ## Jen pro vývoj
 
 Uživatel databáze, hesla (`super`/`pass`, root `root`) a zveřejněný port 6033 v

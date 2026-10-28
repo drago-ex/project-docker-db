@@ -43,3 +43,6 @@ Composer install and update hooks invoke Drago project setup/cleanup commands. I
 - Keep package-specific configuration, resources, and migrations in their established directories. Do not edit generated or consuming-project files without confirming they are part of this repository’s intended output.
 - Add or update focused tests for behavioral changes when this package has a runnable test setup. Do not invent test commands; use only the scripts and configuration present here.
 - Update README examples and Composer metadata when a public API or supported requirement changes.
+
+## Image and data
+- `docker/Dockerfile-db` (`FROM php`) adds mysqli to the runtime of project-docker as the profiled service `php-db`; the override points the server build at it (`additional_contexts: php: service:php-db`). The database data are in the named volume `db-data`; `docker compose down --volumes` deletes them, so the npm script `docker:down` does not use `--volumes`.
