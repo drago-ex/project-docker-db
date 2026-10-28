@@ -8,10 +8,8 @@ Balíček rozšiřuje Drago Project o databázi MySQL v Dockeru.
 ## Požadavky
 
 - PHP >= 8.3, < 9
-- Nette Framework
+- [Drago Project](https://github.com/drago-ex/project)
 - Docker
-- Dibi
-- Základní balíčky Drago Project
 
 ## Instalace
 

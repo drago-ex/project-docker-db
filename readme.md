@@ -8,10 +8,8 @@ The package extends Drago Project with a MySQL database in Docker.
 ## Requirements
 
 - PHP >= 8.3, < 9
-- Nette Framework
+- [Drago Project](https://github.com/drago-ex/project)
 - Docker
-- Dibi
-- Drago Project core packages
 
 ## Installation
 
