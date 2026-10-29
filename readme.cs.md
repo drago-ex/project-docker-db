@@ -33,9 +33,12 @@ Data databáze jsou v Docker volume `db-data`, které je na Windows mnohem rychl
 
 ## Jen pro vývoj
 
-Uživatel databáze, hesla (`super`/`pass`, root `root`) a zveřejněný port 6033 v
-`docker-compose.override.yaml` a `app/db.neon` jsou pro lokální vývoj. Než nastavení poběží jinde, změňte je
-a port nezveřejňujte (skript `docker:production` používá stejné soubory).
+Uživatel databáze a hesla (`super`/`pass`, root `root`) v `docker-compose.override.yaml` a
+`app/db.neon` jsou pro lokální vývoj. Než nastavení poběží jinde, změňte je (skript `docker:production`
+používá stejné soubory).
+
+Databáze poslouchá jen na `127.0.0.1:6033`, takže se k ní připojí nástroje na vašem počítači. Pro zveřejnění
+na všech rozhraních nastavte `DB_PORT=6033`; Docker obchází firewally jako `ufw`, proto to na serveru nikdy nedělejte.
 
 ## Nezapomeňte
 

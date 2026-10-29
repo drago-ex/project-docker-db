@@ -33,9 +33,12 @@ on Windows. `docker compose down` keeps it, `docker compose down --volumes` dele
 
 ## Development only
 
-The database user, passwords (`super`/`pass`, root `root`) and the published port 6033 in
-`docker-compose.override.yaml` and `app/db.neon` are for local development. Change them, and do not publish
-the port, before the setup runs anywhere else (the `docker:production` script uses the same files).
+The database user and passwords (`super`/`pass`, root `root`) in `docker-compose.override.yaml` and
+`app/db.neon` are for local development. Change them before the setup runs anywhere else (the
+`docker:production` script uses the same files).
+
+The database listens only on `127.0.0.1:6033`, so tools on your computer can connect to it. To publish it on
+every interface, set `DB_PORT=6033`; Docker bypasses firewalls such as `ufw`, so never do so on a server.
 
 ## Remember
 

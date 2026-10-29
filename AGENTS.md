@@ -46,3 +46,6 @@ Composer install and update hooks invoke Drago project setup/cleanup commands. I
 
 ## Image and data
 - `docker/Dockerfile-db` (`FROM php`) adds mysqli to the runtime of project-docker as the profiled service `php-db`; the override points the server build at it (`additional_contexts: php: service:php-db`). The database data are in the named volume `db-data`; `docker compose down --volumes` deletes them, so the npm script `docker:down` does not use `--volumes`.
+
+## Security
+- The database port is published only on `127.0.0.1` (`${DB_PORT:-127.0.0.1:6033}`, same pattern as the server of project-docker), because Docker bypasses ufw; `DB_PORT=6033` publishes it everywhere. `db` runs with `no-new-privileges` like `server`. The fixed passwords are for development only (README).
