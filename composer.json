@@ -15,7 +15,7 @@
 		"drago-tools": {
 			"install": {
 				"copy": {
-					"resources/app": "app",
+					"resources/local": "local",
 					"docker/Dockerfile-db": "docker",
 					"docker-compose.override.yaml": "docker-compose.override.yaml"
 				}

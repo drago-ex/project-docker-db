@@ -15,6 +15,9 @@ services:
     build:
       additional_contexts:
         php: service:php-db
+    # the database connection written by the installer (local/db.neon) must outlast a new image
+    volumes:
+      - ./local/:/var/www/html/local/
 
 
   # database

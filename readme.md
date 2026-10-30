@@ -31,10 +31,13 @@ as set in `extra.drago-tools` of this package's `composer.json`.
 The data of the database are in the Docker volume `db-data`, which is much faster than a directory of the project
 on Windows. `docker compose down` keeps it, `docker compose down --volumes` deletes the data.
 
+The database connection is in `local/db.neon`. The `local/` directory is mounted into the container, so what the
+application writes there (e.g. an installer) outlasts a new image; keep it out of git.
+
 ## Development only
 
 The database user and passwords (`super`/`pass`, root `root`) in `docker-compose.override.yaml` and
-`app/db.neon` are for local development. Change them before the setup runs anywhere else (the
+`local/db.neon` are for local development. Change them before the setup runs anywhere else (the
 `docker:production` script uses the same files).
 
 The database listens only on `127.0.0.1:6033`, so tools on your computer can connect to it. To publish it on

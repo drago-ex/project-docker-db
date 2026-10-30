@@ -46,6 +46,7 @@ Composer install and update hooks invoke Drago project setup/cleanup commands. I
 
 ## Image and data
 - `docker/Dockerfile-db` (`FROM php`) adds mysqli to the runtime of project-docker as the profiled service `php-db`; the override points the server build at it (`additional_contexts: php: service:php-db`). The database data are in the named volume `db-data`; `docker compose down --volumes` deletes them, so the npm script `docker:down` does not use `--volumes`.
+- `resources/local/db.neon` is copied to `local/db.neon` (not `app/`, user 2026-10-30): `local/` holds what the application writes for its environment (project-install writes `db.neon` and `installed.lock` there). The override bind-mounts `./local/` into the server, because the project is in the image and a file written only in the container is lost on rebuild; `.dockerignore` of project-docker keeps `local` out of the image.
 
 ## Security
 - The database port is published only on `127.0.0.1` (`${DB_PORT:-127.0.0.1:6033}`, same pattern as the server of project-docker), because Docker bypasses ufw; `DB_PORT=6033` publishes it everywhere. `db` runs with `no-new-privileges` like `server`. The fixed passwords are for development only (README).
