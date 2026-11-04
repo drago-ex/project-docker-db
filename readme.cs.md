@@ -31,8 +31,9 @@ podle nastavení v `extra.drago-tools` v `composer.json` tohoto balíčku.
 Data databáze jsou v Docker volume `db-data`, které je na Windows mnohem rychlejší než adresář projektu.
 `docker compose down` je zachová, `docker compose down --volumes` data smaže.
 
-Připojení k databázi je v `local/db.neon`. Adresář `local/` je připojený do kontejneru, takže co do něj
-aplikace zapíše, přežije nový obraz; do gitu nepatří.
+Připojení k databázi je v `local/db.neon`; do gitu nepatří. Kopíruje se do obrazu s projektem a
+`docker compose watch` (`npm run docker:dev`) jeho změny zkopíruje do běžícího kontejneru, takže připojení měňte
+v souboru svého projektu.
 
 ## Jen pro vývoj
 

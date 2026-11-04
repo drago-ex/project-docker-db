@@ -31,8 +31,9 @@ as set in `extra.drago-tools` of this package's `composer.json`.
 The data of the database are in the Docker volume `db-data`, which is much faster than a directory of the project
 on Windows. `docker compose down` keeps it, `docker compose down --volumes` deletes the data.
 
-The database connection is in `local/db.neon`. The `local/` directory is mounted into the container, so what the
-application writes there outlasts a new image; keep it out of git.
+The database connection is in `local/db.neon`; keep it out of git. It is copied into the image with the project, and
+`docker compose watch` (`npm run docker:dev`) copies its changes into the running container, so change the
+connection in the file of your project.
 
 ## Development only
 

@@ -15,9 +15,12 @@ services:
     build:
       additional_contexts:
         php: service:php-db
-    # the database connection written by the installer (local/db.neon) must outlast a new image
-    volumes:
-      - ./local/:/var/www/html/local/
+    # local/db.neon is copied into the image; `docker compose watch` copies its changes into the container
+    develop:
+      watch:
+        - action: sync
+          path: ./local
+          target: /var/www/html/local
 
 
   # database
