@@ -32,7 +32,7 @@ Data databáze jsou v Docker volume `db-data`, které je na Windows mnohem rychl
 `docker compose down` je zachová, `docker compose down --volumes` data smaže.
 
 Připojení k databázi je v `local/db.neon`. Adresář `local/` je připojený do kontejneru, takže co do něj
-aplikace zapíše (např. instalátor), přežije nový obraz; do gitu nepatří.
+aplikace zapíše, přežije nový obraz; do gitu nepatří.
 
 ## Jen pro vývoj
 

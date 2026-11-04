@@ -32,7 +32,7 @@ The data of the database are in the Docker volume `db-data`, which is much faste
 on Windows. `docker compose down` keeps it, `docker compose down --volumes` deletes the data.
 
 The database connection is in `local/db.neon`. The `local/` directory is mounted into the container, so what the
-application writes there (e.g. an installer) outlasts a new image; keep it out of git.
+application writes there outlasts a new image; keep it out of git.
 
 ## Development only
 
