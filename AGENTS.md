@@ -1,52 +1,24 @@
 # Agent Guide
 
-Use this file as package-specific guidance when working in this repository. Keep changes aligned with the existing public API, project conventions, and supported PHP range.
+`drago-ex/project-docker-db` (type drago-tools-resource, PHP >=8.3 <9): adds MariaDB and mysqli to the Docker
+setup of drago-ex/project-docker and the Dibi connection of the project. The workspace rules are in
+`../AGENTS.md`; dependencies are in `composer.json`.
 
-## Package Overview
-- **Package**: `drago-ex/project-docker-db`
-- **Type**: drago-tools-resource
-- **Purpose**: The package extends the Drago Project to include mysqli database on docker.
-- **PHP**: >=8.3 <9
-- **Runtime dependencies**: drago-ex/database (^4.0 || ^5.0), drago-ex/project-docker (^1.1)
-- **License**: MIT
+## Layout
+- `docker-compose.override.yaml`: the services `php-db` and `db`, the server build override, the watch rule of `local/`.
+- `docker/Dockerfile-db`: `FROM php` + mysqli.
+- `resources/local/db.neon` → `local/db.neon` of the project (configuration of the environment, out of git).
 
-## Repository Layout
-- `docker/`: Docker configuration.
-- `resources/`: application resources contributed to the consuming Drago project.
-- `.github/`: CI workflows; keep their PHP versions and commands consistent with Composer and the package scripts.
-- `composer.json`: package metadata, dependency constraints, autoloading, and available Composer scripts.
+## How it works
+- `php-db` is a profiled service (never started); the override points the server build at it
+  (`additional_contexts: php: service:php-db`), so `docker compose build` builds the whole chain.
+- `local/` is copied into the image with the project; the override adds a `develop.watch` sync of `./local`
+  (Compose appends it to the watch rules of project-docker). Nothing in the container writes `db.neon`; it is
+  edited on the host only, so there is no bind mount.
+- The data are in the named volume `db-data`; the npm script `docker:down` does not use `--volumes`.
+- The database port is published only on `127.0.0.1` (`${DB_PORT:-127.0.0.1:6033}`, the same pattern as the
+  server of project-docker), because Docker bypasses ufw. `db` runs with `no-new-privileges`. The fixed passwords
+  are for development only.
 
-## Dependencies
-
-Composer constraints describe the package contract. Before changing integration behavior, inspect the source and the actual call sites in this package; do not infer runtime usage solely from dependency declarations.
-Development dependencies include drago-ex/project-tools (^1.0).
-
-## Essential Commands
-
-```bash
-# No test or static-analysis Composer script is defined in this package.
-```
-
-## Tests
-
-This repository does not currently define a test script in `composer.json` or contain a `tests/` directory.
-Do not claim behavior is covered by tests unless you find and run a relevant suite. When adding a test suite, follow the package’s existing Nette Tester setup if one is present and add an explicit Composer script.
-
-## Installation Hooks
-
-Composer install and update hooks invoke Drago project setup/cleanup commands. Inspect those scripts and their effects before invoking Composer operations that trigger them; they may modify generated project files.
-
-## Conventions & Rules
-
-- Preserve backward compatibility unless the task explicitly permits a breaking change. Check callers and public signatures before changing behavior.
-- Follow the existing PHP style: strict types, explicit parameter and return types, tabs for indentation, and single-quoted strings where practical. Match nearby code when a convention is unclear.
-- Keep package-specific configuration, resources, and migrations in their established directories. Do not edit generated or consuming-project files without confirming they are part of this repository’s intended output.
-- Add or update focused tests for behavioral changes when this package has a runnable test setup. Do not invent test commands; use only the scripts and configuration present here.
-- Update README examples and Composer metadata when a public API or supported requirement changes.
-
-## Image and data
-- `docker/Dockerfile-db` (`FROM php`) adds mysqli to the runtime of project-docker as the profiled service `php-db`; the override points the server build at it (`additional_contexts: php: service:php-db`). The database data are in the named volume `db-data`; `docker compose down --volumes` deletes them, so the npm script `docker:down` does not use `--volumes`.
-- `resources/local/db.neon` is copied to `local/db.neon` (not `app/`, user 2026-10-30): `local/` holds the configuration of this environment (e.g. `db.neon`, out of git). `local/` is copied into the image with the project and the override adds a `develop.watch` sync of `./local` (Compose appends it to the watch rules of project-docker). It used to be a bind mount, because the web installer wrote `db.neon` in the container; the installer is gone (user, 2026-11-05), the file is edited on the host only.
-
-## Security
-- The database port is published only on `127.0.0.1` (`${DB_PORT:-127.0.0.1:6033}`, same pattern as the server of project-docker), because Docker bypasses ufw; `DB_PORT=6033` publishes it everywhere. `db` runs with `no-new-privileges` like `server`. The fixed passwords are for development only (README).
+## Commands
+No tests or PHPStan; CI runs only the Nette Code Checker.

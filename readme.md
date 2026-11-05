@@ -1,6 +1,7 @@
-# Drago Project with a database
+# Drago Project Docker Database
 
-The package extends Drago Project with a MySQL database in Docker.
+A MariaDB database in Docker for Drago Project, the mysqli extension in the PHP image and the database connection
+of the application (Dibi).
 
 [![PHP version](https://badge.fury.io/ph/drago-ex%2Fproject-docker-db.svg)](https://badge.fury.io/ph/drago-ex%2Fproject-docker-db)
 [![Coding Style](https://github.com/drago-ex/project-docker-db/actions/workflows/coding-style.yml/badge.svg)](https://github.com/drago-ex/project-docker-db/actions/workflows/coding-style.yml)
@@ -8,7 +9,7 @@ The package extends Drago Project with a MySQL database in Docker.
 ## Requirements
 
 - PHP >= 8.3, < 9
-- [Drago Project](https://github.com/drago-ex/project)
+- [Drago Project](https://github.com/drago-ex/project) with [Project Docker](https://github.com/drago-ex/project-docker)
 - Docker
 
 ## Installation
@@ -17,35 +18,21 @@ The package extends Drago Project with a MySQL database in Docker.
 composer require drago-ex/project-docker-db
 ```
 
-## Files copied into the project
+[Project Tools](https://github.com/drago-ex/project-tools) copies `docker-compose.override.yaml`, the Dockerfile
+of the database image and `local/db.neon` into the project. Build the images again afterwards
+(`npm run docker:build`).
 
-The files are copied into the project by [drago-ex/project-tools](https://github.com/drago-ex/project-tools),
-as set in `extra.drago-tools` of this package's `composer.json`.
+## Usage
 
-## The package does the following
+- The database `app` runs as the service `db`; the connection of the application is in `local/db.neon`
+  (keep it out of git). `docker compose watch` (`npm run docker:dev`) copies its changes into the container.
+- The data are in the Docker volume `db-data`. `docker compose down` keeps them, `docker compose down --volumes`
+  deletes them.
+- The database listens on `127.0.0.1:6033`, so tools on your computer can connect to it. `DB_PORT=6033`
+  publishes it on every interface; Docker bypasses firewalls such as `ufw`, so never do so on a server.
 
-- Copies a configured Neon file with database settings preconfigured for Docker.
-- Adds Docker files for database setup.
-- Integrates Dibi for database interaction.
+## Development Only
 
-The data of the database are in the Docker volume `db-data`, which is much faster than a directory of the project
-on Windows. `docker compose down` keeps it, `docker compose down --volumes` deletes the data.
-
-The database connection is in `local/db.neon`; keep it out of git. It is copied into the image with the project, and
-`docker compose watch` (`npm run docker:dev`) copies its changes into the running container, so change the
-connection in the file of your project.
-
-## Development only
-
-The database user and passwords (`super`/`pass`, root `root`) in `docker-compose.override.yaml` and
-`local/db.neon` are for local development. Change them before the setup runs anywhere else (the
-`docker:production` script uses the same files).
-
-The database listens only on `127.0.0.1:6033`, so tools on your computer can connect to it. To publish it on
-every interface, set `DB_PORT=6033`; Docker bypasses firewalls such as `ufw`, so never do so on a server.
-
-## Remember
-
-The package extends the basic PHP Docker server with a MySQL database. Install and build the base Docker setup first, then add this database package and rebuild Docker.
-
-https://github.com/drago-ex/project-docker
+The user and passwords (`super`/`pass`, root `root`) in `docker-compose.override.yaml` and `local/db.neon` are
+for local development. Change them before the setup runs anywhere else; the `docker:production` script uses the
+same files.
